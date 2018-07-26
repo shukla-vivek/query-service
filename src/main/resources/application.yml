@@ -1,0 +1,25 @@
+
+spring:
+  application:
+      name: query-service
+  profiles: dev
+  couchbase:
+     bootstrap-hosts: https://localhost:8091
+     bucket:
+       name: DESMAN
+       #password: ccds123
+     env:
+      ssl:
+        key-store-password: changeit
+        enabled: true 
+        key-store: ${mypath}      
+server:
+  port: 48083
+logging:
+  path: log  
+  level:
+    org.springframework: ERROR
+    com.orange.tsa: DEBUG
+  pattern:
+    file: "%d{yyyy-MM-dd  HH:mm:ss} - %msg%n"
+  file: ./${logging.path}/${spring.application.name}-${random.value}.log  
